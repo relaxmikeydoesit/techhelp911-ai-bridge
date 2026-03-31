@@ -1,0 +1,122 @@
+/* Container and Trigger */
+#chat-widget-container { 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 1000; 
+    font-family: sans-serif; 
+   }
+
+#chat-trigger { 
+    background: #f4c430; 
+    border: none; 
+    padding: 15px 25px; 
+    border-radius: 50px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+}
+
+/* The Base Window (Anchored to 350x450) */
+#chat-window { 
+    width: 350px !important; 
+    height: 450px !important; 
+    background: #2d2d44; 
+    border-radius: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    margin-bottom: 10px; 
+    transition: width 0.3s ease, height 0.3s ease; 
+}
+
+/* The Expansion Logic */
+#chat-window.expanded { 
+    width: 35vw !important; 
+    height: 80vh !important; 
+}
+
+/* The Visibility Toggle */
+.chat-hidden { 
+    display: none !important; 
+}
+
+/* Header & Controls */
+#chat-header { 
+    background: #1e1e2f; 
+    padding: 15px; 
+    display: flex; 
+    justify-content: space-between; 
+    font-weight: bold; 
+    font-size: 1.1rem; 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+    color: white;
+}
+
+.header-controls { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+}
+.header-controls button {
+    background:none; 
+    border:none; 
+    color:white; 
+    cursor:pointer; 
+    font-size: 1.1rem; 
+    padding: 0; 
+}
+
+/* Message Area */
+#chat-body { 
+    flex: 1; 
+    padding: 15px; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    color: white;
+}
+
+.msg { 
+    padding: 10px 14px; 
+    border-radius: 8px; 
+    font-size: 1rem; 
+    max-width: 80%; 
+    line-height: 1.5; 
+}
+.ai-msg {
+     background: #3d3d5c;
+     align-self: flex-start; 
+    }
+.user-msg {
+     background: #f4c430; 
+     color: #000; 
+     align-self: flex-end; 
+    }
+
+/* Footer & Input */
+#chat-footer { 
+    padding: 10px; 
+    background: #1e1e2f; 
+    display: flex; 
+    gap: 5px; 
+}
+#chat-footer input {
+     flex: 1;
+     padding: 8px;
+     border-radius: 4px; 
+     border: none; 
+     background: #3d3d5c; 
+     color: white; 
+    }
+#chat-footer button {
+     background: #f4c430; 
+     border: none; 
+     padding: 10px 15px; 
+     border-radius: 4px; 
+     cursor: pointer; 
+     font-weight: bold; 
+    }

@@ -1,0 +1,138 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TechHelp911 | Expert Support</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/chat.css">
+    </head>
+    <body>
+
+        <nav>
+            <div class="logo">🎧 TechHelp911</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-gold">Book Now</a>
+                <a href="#" class="btn btn-outline">JOIN TODAY</a>
+            </div>
+        </nav>
+
+        <div class="hero__wrapper">
+        <div class="hero">
+            <h1>Privacy-First Technical Support</h1>
+            <p>Get professional assistance for all your technology needs. Quick, reliable, and hassle-free.</p>
+            <!-- <a href="#" class="btn btn-gold" style="padding: 15px 30px;">ASK AN EXPERT</a>
+            -->
+           </div>
+           <img src="images/clearly-unsplash.jpg" alt="">
+</div>
+       <section class="why-choose"> 
+                   <h2>Why Choose Our Remote Tech Support</h2>
+            <p>Professional assistance without the hassle of in-person visits.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Privacy-First</h3>
+                    <p>We will never sell or rent our clients' information. Our developer receieved the Google Cybersecurity certification in 2025. Welcome to Privacy-By-Design.</p>
+                </div>
+                <div class="card">
+                    <h3>Quick Response Time</h3>
+                    <p>Book a session and connect with an Expert when it's convienent for you. <br>
+                        For a limited time, our Next-Day service is Pay-What-You-Can. <br>
+                        'ASAP' and '3-Hour' response times require pre-payment.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Expert Technicians</h3>
+                    <p>Our team consists of tech professionals with years of experience.</p>
+                </div>
+              
+            </div>
+        </section> 
+
+         <section class="services">
+            <h2>Our Services</h2>
+            <div class="grid">
+                <div class="service-card">
+                    <h3>On-Demand Support</h3>
+                    <p>Don't let your tech get in your way - We're here to help! Start a conversation with AIden, our virtual receptionist, and he'll add you to the queue. </p>
+                    <span class="price">$9.99 or Pay What You Can</span>
+                    <a href="#" class="book-link">Book Now →</a>
+                </div>
+                <div class="service-card">
+                    <h3>Tech Tutor</h3>
+                    <p>Tech tutor is a one hour service, where </p>
+                    <span class="price">$29.99</span>
+                    <a href="#" class="book-link">Book Now →</a>
+                </div>
+                <div class="service-card">
+                    <h3>Account Setup</h3>
+                    <p>Configuration of user accounts and software installations.</p>
+                    <span class="price">$19.99</span>
+                    <a href="#" class="book-link">Book Now →</a>
+                </div>
+            </div>
+        </section> 
+
+        <footer>
+            <div class="footer-col">
+                <h4>TechHelp911</h4>
+                <p>Expert remote tech support at your fingertips. We are here to solve your technology challenges.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <!-- <li>PC Tune-Up</li> -->
+                    <li>Troubleshooting</li>
+                    <li>Install/Setup</li>
+                    <li>Tech Tutor</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li>FAQ</li>
+                    <li>Help Center</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+               <a href="mailto:mikey@techhelp911.xyz">mikey@techhelp911.xyz</a>
+                <a href="tel:+4633152109">Call Or Text Us</a>
+            </div>
+            <div class="bottom-bar">
+                © 2026 Mikey Lee. All rights reserved. Built to Help Others.
+            </div>
+        </footer>
+
+        <div id="chat-widget-container">
+            <div id="chat-window" class="chat-hidden">
+                <div id="chat-header">
+                    <span>🎧 TechHelp911 AI Triage</span>
+                    <div class="header-controls">
+                        <button onclick="expandChat()" id="expand-btn">⛶</button>
+                        <button onclick="toggleChat()">✕</button>
+                    </div>
+                </div>
+                <div id="chat-body">
+                    <div class="msg ai-msg">Hello! I'm the TechHelp911 assistant. What seems to be the trouble today?</div>
+                </div>
+                <div id="chat-footer">
+                    <input type="text" id="user-input" placeholder="Type your issue..." onkeypress="handleKey(event)">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+            <button id="chat-trigger" onclick="toggleChat()">
+                <span>Ask an Expert</span>
+            </button>
+        </div>
+        
+        <script src="server.js"></script>
+        <script src="app/chat.js"></script>
+    </body>
+    </html>
