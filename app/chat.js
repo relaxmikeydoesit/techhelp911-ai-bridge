@@ -7,46 +7,44 @@ async function sendMessage() {
     const body = document.getElementById('chat-body');
     const text = input.value.trim();
     
-    // Don't send empty messages
     if (!text) return;
 
-    // A. Update UI: Show User Message
     body.innerHTML += `<div class="msg user-msg">${text}</div>`;
-    input.value = ''; // Clear input
+    input.value = '';
     body.scrollTop = body.scrollHeight;
 
-    // B. Update UI: Show Typing Indicator
     const typingId = 'typing-' + Date.now();
     body.innerHTML += `<div id="${typingId}" class="msg ai-msg">...</div>`;
-    body.scrollTop = body.scrollHeight;
 
     try {
-        // C. Talk to the Bridge (Passing History)
         const response = await fetch('/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                prompt: text, 
-                history: chatHistory 
-            })
+            body: JSON.stringify({ prompt: text, history: chatHistory })
         });
 
         const data = await response.json();
-        const aiMessage = data.text || "I'm having trouble connecting to my brain!";
+        const rawAiMessage = data.text || "I'm having trouble connecting!";
 
-        // D. Update UI: Replace "..." with AI response
-        document.getElementById(typingId).innerText = aiMessage;
+        // 1. Create a version for the UI (with links)
+        const formattedMessage = rawAiMessage.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function(match, text, url) {
+            return `<a href="${url}" target="_blank" class="chat-link">${text}</a>`;
+        });
 
-        // E. CRITICAL: Save this exchange to History
+        // 2. Show the formatted version to the user
+        document.getElementById(typingId).innerHTML = formattedMessage;
+
+        // 3. Save the RAW version to history
         chatHistory.push({ role: "user", parts: [{ text: text }] });
-        chatHistory.push({ role: "model", parts: [{ text: aiMessage }] });
+        chatHistory.push({ role: "model", parts: [{ text: rawAiMessage }] });
 
     } catch (error) {
-        document.getElementById(typingId).innerText = "🚨 Connection to Bridge lost.";
+        const typingElem = document.getElementById(typingId);
+        if (typingElem) typingElem.innerText = "🚨 Connection lost.";
     }
-    
+
     body.scrollTop = body.scrollHeight;
-}
+} // <--- THIS BRACE was missing or in the wrong place!
 
 // --- 3. Utility Functions ---
 
@@ -56,6 +54,8 @@ function handleKey(e) {
 
 function toggleChat() {
     const win = document.getElementById('chat-window');
+    if (!win) return;
+    
     win.classList.toggle('chat-hidden');
     
     if (win.classList.contains('chat-hidden')) {
